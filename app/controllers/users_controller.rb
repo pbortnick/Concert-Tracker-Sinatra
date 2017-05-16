@@ -3,10 +3,10 @@ require './config/environment'
 class UsersController < ApplicationController
 
   get '/signup' do
-    if !logged_in?
-      erb :'users/create_user'
-    else
+    if logged_in?
       redirect to '/concerts'
+    else
+      erb :'users/signup'
     end
   end
 
@@ -39,6 +39,13 @@ class UsersController < ApplicationController
     end
   end
 
-
+  get '/logout' do
+    if !logged_in?
+      erb :logout
+    else
+      session.destroy
+      redirect to '/login'
+    end
+  end
 
 end
