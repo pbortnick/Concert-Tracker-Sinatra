@@ -1,0 +1,15 @@
+<h2>Edit Concert:</h2>
+
+<%=@concert.band%>
+<%=@concert.venue%>
+<%=@concert.date%>
+
+<form method="post" action="/concerts/<%=@concert.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+  <input type="text" name="content" value="<%= @concert.band %>">
+  <input type="text" name="content" value="<%= @concert.venue %>">
+  <input type="text" name="content" value="<%= @concert.date %>">
+
+  <input type="submit" value="submit">
+</form>

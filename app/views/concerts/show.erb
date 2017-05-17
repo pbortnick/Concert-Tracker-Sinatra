@@ -1,0 +1,12 @@
+<%= @concert.band %>
+<br>
+<%= @concert.venue %>
+<br>
+<%= @concert.date %>
+
+<form method="post" action="/concerts/<%=@concert.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Item">
+</form>
+
+<a href="/concerts/<%=@concert.id%>/edit">Edit Item </a>
