@@ -4,9 +4,19 @@
 <br>
 <%= @concert.date %>
 
+<br></br>
+
 <form method="post" action="/concerts/<%=@concert.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Item">
 </form>
 
 <a href="/concerts/<%=@concert.id%>/edit">Edit Item </a>
+
+<br></br>
+
+<a href="/concerts">View All</a>
+
+<br></br>
+
+<a href="/logout">Log Out</a>

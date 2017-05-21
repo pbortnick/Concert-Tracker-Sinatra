@@ -1,9 +1,14 @@
+<h1>Welcome to your concert tracker,  <%=current_user.username%></h1>
+
+
 <%@concerts.each do |concert|%>
-
-  <%=concert.band%>
-  <%=concert.venue%>
-  <%=concert.date%>
-
+  <%=concert.band%> <br>
+  <%=concert.venue%> <br>
+  <%=concert.date%> <br></br>
 <%end%>
+
+
+<a href="/concerts/new">Add a Concert</a>
+<br></br>
 
 <a href="/logout">Log Out</a>
