@@ -1,33 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Concert Database</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Concert Tracker</title>
   </head>
+
   <body>
-    <nav>
-      <% if logged_in? %>
-
-        <a href="/tweets/new"> Add a Concert </a>
-        <a href="/logout"> Log Out </a>
-        <p>Welcome to your concert database, <%=current_user.username %></p>
-
-      <% else %>
-      <br></br>
-        <a href="/signup">Sign Up</a>
-        <br></br>
-        <a href="/login"> Sign In </a>
-      <%end %>
-
-    </nav>
-    <div class="container">
-      <h1>Welcome to the Concert Database</h1>
-      <%= yield %>
-
-
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <%= yield %>
   </body>
 </html>

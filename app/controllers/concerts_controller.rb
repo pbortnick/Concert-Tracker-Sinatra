@@ -4,7 +4,7 @@ class ConcertsController < ApplicationController
 
   get '/concerts' do
     if logged_in?
-      @concerts = Concert.all
+      @concerts = current_user.concerts
       erb :'/concerts/index'
     else
       redirect "/login"
@@ -31,7 +31,6 @@ class ConcertsController < ApplicationController
       redirect "/concerts/new"
     else
       @concert = current_user.concerts.create(band: params[:band], venue: params[:venue], date: params[:date])
-      @concert.save
       redirect "/concerts/#{@concert.id}"
     end
   end
@@ -51,10 +50,10 @@ class ConcertsController < ApplicationController
       if @concert.user_id == current_user.id
        erb :'concerts/edit'
       else
-        redirect to '/concerts'
+        redirect "/concerts"
       end
     else
-      redirect to '/login'
+      redirect "/login"
     end
   end
 
@@ -83,7 +82,7 @@ class ConcertsController < ApplicationController
     if logged_in?
       @concert = Concert.find_by_id(params[:id])
       if @concert.user_id == current_user.id
-        @concert.destroy
+        @concert.delete
         redirect "/concerts"
       else
         redirect "/concerts"

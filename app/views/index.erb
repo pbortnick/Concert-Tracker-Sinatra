@@ -1,1 +1,17 @@
-<h2>Welcome. You can finally empty that drawer full of ticket stubs!</h2>
+<h1>Welcome to the Concert Tracker</h1>
+<h2>You can finally empty that drawer full of ticket stubs!</h2>
+
+
+<% if logged_in? %>
+
+  <a href="/concerts/new"> Add a Concert </a>
+  <a href="/logout"> Log Out </a>
+  <p><%=current_user.username%>'s Database</p>
+
+<% else %>
+<br></br>
+  <a href="/signup">Sign Up</a>
+  <br></br>
+  <a href="/login"> Log In </a>
+
+<%end %>
