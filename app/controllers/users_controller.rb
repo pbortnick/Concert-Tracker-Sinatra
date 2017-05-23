@@ -1,23 +1,26 @@
-require './config/environment'
-
 class UsersController < ApplicationController
 
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :'users/user_concerts'
+  end
+
   get '/signup' do
-    if logged_in?
-      redirect to '/concerts'
+    if !logged_in?
+      erb :'users/new'
     else
-      erb :'users/signup'
+      redirect "/concerts"
     end
   end
 
   post '/signup' do
-    if params[:username] != "" || params[:email] != "" || params[:password] != ""
-      @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+    if params[:username] = "" || params[:email] = "" || params[:password] = ""
+      redirect "/signup"
+    else
+      @user = User.new(username: params[:username], email: params[:email], password: params[:password])
       @user.save
       session[:user_id] = @user.id
-      redirect to '/concerts'
-    else
-      redirect to '/signup'
+      redirect "/concerts"
     end
   end
 
@@ -25,31 +28,27 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/login'
     else
-      redirect '/concerts'
+      redirect "/concerts"
     end
   end
 
   post '/login' do
-    user = User.find_by(:username => params[:username])
+    user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/concerts'
+      redirect "/concerts"
     else
-      redirect to '/signup'
+      redirect "/signup"
     end
   end
 
   get '/logout' do
     if logged_in?
-      erb :'users/logout'
+      session.destroy
+      redirect "/login"
     else
-      redirect"/"
+      redirect "/"
     end
-  end
-
-  get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
-    erb :'/users/show'
   end
 
 end

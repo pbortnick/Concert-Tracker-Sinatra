@@ -1,0 +1,10 @@
+<p> Here is your database, <%= @user.username %>
+<% @user.concerts.each do |concert| %>
+  <div>
+    <%= concert.band %>
+    <br></br>
+    <%= concert.venue %>
+    <br></br>
+    <%= concert.date %>
+  </div>
+<% end %>

@@ -1,3 +1,7 @@
+<% if flash.has?(:error) %>
+  <%= flash[:error] %>
+<% end %>
+
 <%= @concert.band %>
 <br>
 <%= @concert.venue %>
