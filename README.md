@@ -1,3 +1,6 @@
+## Blog Post
+http://pamelahoneybortnick.com/2017/05/26/sinatra_portfolio_project_concert_database/
+
 ## Synopsis
 
 This project uses ActiveRecord with Sinatra to create a database that records details about a user's attended concerts including the band and the date.
